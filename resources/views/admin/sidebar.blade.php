@@ -169,6 +169,16 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ url('admin/order/list') }}" class="nav-link">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                                <p>
+                                    Quản lí đơn hàng
+                                    <i class="right fas fa-angle-right"></i>
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-item d-sm-inline-block">
                             <a href="{{ url('/logout') }}" class="nav-link">
                                 <i class="fas fa-sign-out-alt"></i>

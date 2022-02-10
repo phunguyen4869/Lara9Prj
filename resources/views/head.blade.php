@@ -6,7 +6,8 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="/template/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="/template/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+{{-- <link rel="stylesheet" type="text/css" href="/template/fonts/font-awesome-4.7.0/css/font-awesome.min.css"> --}}
+<link rel="stylesheet" type="text/css" href="/template/fonts/fontawesome-free-6.0.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="/template/fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->

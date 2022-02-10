@@ -63,6 +63,11 @@ class ProductAdminService
             ->orderBy('id', 'asc')->paginate(10);
     }
 
+    public function getById($id)
+    {
+        return Product::find($id);
+    }
+
     public function update($request, $product)
     {
         $isValidPrice = $this->isValidPrice($request);
