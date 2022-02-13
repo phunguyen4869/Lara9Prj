@@ -303,7 +303,7 @@ Route::prefix('admin')->group(function () {
             });
         });
 
-        //upload
+        //route to upload
         Route::post('upload/services', [UploadController::class, 'store']);
     });
 
@@ -323,11 +323,16 @@ Route::prefix('admin')->group(function () {
             Route::middleware('permission:delete order')->group(function () {
                 Route::delete('destroy', 'destroy');
             });
+
+            Route::middleware('role:admin|moderator')->group(function () {
+                //route to change order status
+                Route::get('changeStatus', 'changeStatus');
+            });
         });
     });
 });
 Route::controller(MainController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('home');
 
     //show product modal
     Route::get('productModal', 'showProductModal');

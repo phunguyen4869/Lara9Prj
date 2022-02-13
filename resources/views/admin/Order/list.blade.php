@@ -5,10 +5,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID Order</th>
+                <th>Order ID</th>
                 <th>Tên sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Tổng cộng</th>
+                <th>Customer ID</th>
                 <th>Phương thức thanh toán</th>
                 <th>Trạng thái</th>
                 <th width="10%">Action</th>
@@ -29,8 +30,18 @@
                         @endforeach
                     </td>
                     <td>{{ $order['total'] }}</td>
+                    <td>{{ $order['customer_id'] }}</td>
                     <td>{{ $order['payment_method'] }}</td>
-                    <td>{!! App\Helpers\Helper::active($order['status']) !!}</td>
+                    <td>{!! App\Helpers\Helper::active($order['status'], 'order', $order['id']) !!}</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="edit/{{ $order['id'] }}">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                            onclick="removeRow({{ $order['id'] }}, '/admin/order/destroy')">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

@@ -27,7 +27,7 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ], $request->remember)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         } else {
             return redirect()->back()->withInput()->withErrors([
                 'email' => 'Email or password is invalid',
@@ -40,6 +40,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }

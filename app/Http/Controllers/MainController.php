@@ -2,30 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\Category\CategoryService;
 use Illuminate\Http\Request;
+use App\Http\Services\SearchService;
 use App\Http\Services\Slider\SliderService;
 use App\Http\Services\Product\ProductService;
+use App\Http\Services\Category\CategoryService;
 
 class MainController extends Controller
 {
     protected $sliders;
     protected $products;
     protected $categories;
+    protected $search;
 
-    public function __construct(SliderService $sliders, ProductService $products, CategoryService $categories)
+    public function __construct(SliderService $sliders, ProductService $products, CategoryService $categories, SearchService $search)
     {
         $this->sliders = $sliders;
         $this->products = $products;
         $this->categories = $categories;
+        $this->search = $search;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        if (!empty($request->input('search'))) {
+            $products = $this->search->search($request->input('search'));
+            //dd($products);
+
+            return view('search', [
+                'title' => 'Search',
+                'products' => $products
+            ]);
+        }
+
+        if (!empty($request->user()->name)) {
+            $userName = $request->user()->name;
+        } else {
+            $userName = null;
+        }
+
         return view('home', [
             'title' => 'Trang chủ',
             'sliders' => $this->sliders->show(),
             'products' => $this->products->get(),
+            'userName' => $userName,
         ]);
     }
 

@@ -1,33 +1,54 @@
 <!-- Header -->
-<header class="header-v2">
+<header class="header-v4">
     <!-- Header desktop -->
     <div class="container-menu-desktop">
         <!-- Topbar -->
-        {{-- <div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
+        <div class="top-bar">
+            <div class="content-topbar flex-sb-m h-full container">
+                @if (!empty(Auth::user()))
+                    <div class="left-top-bar">
+                        Chào mừng <span class="text-primary">{{ Auth::user()->name }}</span> đến với Lara Shop
+                    </div>
+                @else
+                    <div class="left-top-bar">
+                        Đăng nhập hoặc đăng kí ngay để nhận được những quyền lợi hấp dẫn nhất
+                    </div>
+                @endif
 
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+                <div class="right-top-bar flex-w h-full">
+                    {{-- <a href="#" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
-						</a>
+						</a> --}}
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
+                    @if (!empty(Auth::user()))
+                        <a href="/admin/dashboard" class="flex-c-m trans-04 p-lr-25">
+                            My Account
+                        </a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+                        <a href="logout" class="flex-c-m trans-04 p-lr-25">
+                            Logout
+                        </a>
+                    @else
+                        <a href="/admin/login" class="flex-c-m trans-04 p-lr-25">
+                            Login
+                        </a>
+
+                        <a href="/admin/register" class="flex-c-m trans-04 p-lr-25">
+                            Register
+                        </a>
+                    @endif
+
+
+                    {{-- <a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
 						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							USD
-						</a>
-					</div>
-				</div>
-			</div> --}}
+						</a> --}}
+                </div>
+            </div>
+        </div>
 
 
         <div class="wrap-menu-desktop">

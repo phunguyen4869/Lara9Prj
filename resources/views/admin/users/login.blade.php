@@ -8,12 +8,12 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Admin</b></a>
+            <a href="#"><b>Lara Shop</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Sign in</p>
                 @include('admin.alert')
                 <form action="login/store" method="post">
                     <div class="input-group mb-3">

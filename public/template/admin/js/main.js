@@ -152,3 +152,24 @@ $('#payment_method').change(function () {
             break;
     }
 });
+
+$('#payment_method').ready(function () {
+    let value = $(this).find("option:selected").attr("value");
+
+    switch (value) {
+        case "credit_card":
+            $('#credit_card').removeClass('hidden');
+            $('#atm_card').addClass('hidden');
+            break;
+
+        case "atm_card":
+            $('#atm_card').removeClass('hidden');
+            $('#credit_card').addClass('hidden');
+            break;
+
+        case "cod":
+            $('#atm_card').addClass('hidden');
+            $('#credit_card').addClass('hidden');
+            break;
+    }
+});
