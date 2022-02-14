@@ -2,6 +2,8 @@
 
 namespace App\Http\Services;
 
+use Illuminate\Support\Facades\Log;
+
 class UploadService
 {
     public function store($request)
@@ -29,6 +31,7 @@ class UploadService
                 return $url;
             }
         } catch (\Exception $error) {
+            Log::error($error->getMessage());
             return false;
         }
     }
