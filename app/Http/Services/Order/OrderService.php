@@ -41,6 +41,40 @@ class OrderService
         return $orders;
     }
 
+    public function getOrderbyCustomer($id)
+    {
+        $orders = Order::where('customer_id', $id)->get();
+
+        $products_id = [];
+        foreach ($orders as $key => $value) {
+            $products_id[$key] = $value->product_id;
+            $quantity[$key] = $value->quantity;
+        }
+
+        foreach ($products_id as $key => $value) {
+            $products_id[$key] = explode('&', $value);
+            $quantity[$key] = explode('&', $quantity[$key]);
+        }
+
+        $orders = $orders->toArray();
+        foreach ($orders as $key => $value) {
+            $orders[$key]['product_id'] = $products_id[$key];
+            $orders[$key]['quantity'] = $quantity[$key];
+        }
+
+        foreach ($orders as $key1 => $value) {
+            $products_id = $value['product_id'];
+            $products = [];
+            foreach ($products_id as $key2 => $value) {
+                $product = Product::select('name')->where('id', $value)->first();
+                $products[$key2] = $product->name;
+            }
+            $orders[$key1]['products'] = $products;
+        }
+
+        return $orders;
+    }
+
     public function getOrderbyId($id)
     {
         $order = Order::where('id', $id)->first();
@@ -80,6 +114,17 @@ class OrderService
             $customer->bank_name = $customer->bank_name;
             $customer->atm_card_name = $customer->atm_card_name;
             $customer->save();
+        } catch (\Exception $error) {
+            Log::error($error->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function destroy($id)
+    {
+        try {
+            Order::where('id', $id)->delete();
         } catch (\Exception $error) {
             Log::error($error->getMessage());
             return false;

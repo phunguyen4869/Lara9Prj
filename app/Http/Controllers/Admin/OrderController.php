@@ -16,6 +16,13 @@ class OrderController extends Controller
         $this->order = $order;
     }
 
+    public function orderAPI()
+    {
+        $order = Order::all();
+
+        return response()->json($order);
+    }
+
     public function index()
     {
         $orders = $this->order->get();
@@ -50,6 +57,23 @@ class OrderController extends Controller
             }
         } else {
             return redirect('/admin/order/list');
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $result = $this->order->destroy($request->input('id'));
+
+        if ($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa đơn hàng thành công',
+            ]);
+        } else {
+            return response()->json([
+                'error' => true,
+                'message' => 'Xóa đơn hàng thất bại',
+            ]);
         }
     }
 

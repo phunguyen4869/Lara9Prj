@@ -23,4 +23,9 @@ class Customer extends Model
         'bank_name',
         'atm_card_name',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
