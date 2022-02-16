@@ -16,7 +16,10 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-sm-inline-block">
-                    <a href="{{url('admin/dashboard')}}" class="nav-link">Home</a>
+                    <a href="{{ url('admin/dashboard') }}" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item d-sm-inline-block">
+                    <a href="{{ url('/') }}" class="nav-link">Home</a>
                 </li>
             </ul>
         </nav>
