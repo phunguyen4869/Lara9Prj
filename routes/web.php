@@ -326,7 +326,7 @@ Route::prefix('admin')->group(function () {
 
             Route::middleware('role:admin|moderator')->group(function () {
                 //route to change order status
-                Route::get('changeStatus', 'changeStatus');
+                Route::get('send-mail', 'sendMail');
             });
         });
     });

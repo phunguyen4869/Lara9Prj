@@ -173,3 +173,24 @@ $('#payment_method').ready(function () {
             break;
     }
 });
+
+function sendOrderMail(orderID) {
+    if (confirm('Bạn có chắc chắn muốn gửi mail xác nhận đơn hàng không?')) {
+        $.ajax({
+            type: 'GET',
+            datatype: 'json',
+            data: {
+                orderID
+            },
+            url: '/admin/order/send-mail',
+            success: function (result) {
+                if (result.error === false) {
+                    alert(result.message);
+                    $(".table").load(location.href + " .table>*", "");
+                } else {
+                    alert('Gửi mail không thành công, vui lòng thử lại');
+                }
+            }
+        });
+    }
+}

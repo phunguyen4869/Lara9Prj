@@ -77,19 +77,18 @@ class OrderController extends Controller
         }
     }
 
-    public function changeStatus(Request $request)
+    public function sendMail(Request $request)
     {
         $result = $this->order->changeStatus($request);
 
         if ($result) {
             return response()->json([
                 'error' => false,
-                'message' => 'Đã cập nhật trạng thái đơn hàng',
+                'message' => 'Đã gửi mail xác nhận đơn hàng thành công',
             ]);
         } else {
             return response()->json([
                 'error' => true,
-                'message' => 'Có lỗi xảy ra trong quá trình cập nhật trạng thái',
             ]);
         }
     }

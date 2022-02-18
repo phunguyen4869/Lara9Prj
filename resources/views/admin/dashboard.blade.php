@@ -34,9 +34,9 @@
                     <td>{{ $order['payment_method'] }}</td>
                     <td>
                         @if ($order['status'] == 0)
-                            Chưa xử lý
+                            Chưa xác nhận
                         @elseif ($order['status'] == 1)
-                            Đã xử lý
+                            Đã xác nhận
                         @endif
                     </td>
                 </tr>

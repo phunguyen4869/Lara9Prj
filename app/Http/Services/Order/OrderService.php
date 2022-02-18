@@ -5,7 +5,9 @@ namespace App\Http\Services\Order;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Mail\OrderConfirm;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class OrderService
 {
@@ -134,11 +136,14 @@ class OrderService
 
     public function changeStatus($request)
     {
-        $order = Order::where('id', $request->input('id'))->first();
+        $order = $this->getOrderbyId($request->input('orderID'));
+        $customerName = $order->customer->name;
 
         if ($order) {
-            $order->status = $request->input('status');
-            $order->save();
+            Mail::to($order->customer->email)->send(new OrderConfirm($order, $customerName));
+
+            Order::where('id', $request->input('orderID'))->update(['status' => 1]);
+
             return true;
         }
 

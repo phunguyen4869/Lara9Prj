@@ -11,7 +11,7 @@
                 <th>Tổng cộng</th>
                 <th>Customer ID</th>
                 <th>Phương thức thanh toán</th>
-                <th>Trạng thái</th>
+                <th>Gửi mail xác nhận</th>
                 <th width="10%">Action</th>
             </tr>
         </thead>
@@ -32,7 +32,15 @@
                     <td>{{ $order['total'] }}</td>
                     <td>{{ $order['customer_id'] }}</td>
                     <td>{{ $order['payment_method'] }}</td>
-                    <td>{!! App\Helpers\Helper::active($order['status'], 'order', $order['id']) !!}</td>
+                    {{-- <td>{!! App\Helpers\Helper::active($order['status'], 'order', $order['id']) !!}</td> --}}
+                    <td>
+                        @if ($order['status'] == 0)
+                            <span class="badge badge-danger product-active-btn" onclick="sendOrderMail({{ $order['id'] }})"
+                                style="cursor: pointer">Chưa gửi</span>
+                        @else
+                            <span class="badge badge-success product-active-btn">Đã gửi</span>
+                        @endif
+                    </td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="edit/{{ $order['id'] }}">
                             <i class="far fa-edit"></i>
