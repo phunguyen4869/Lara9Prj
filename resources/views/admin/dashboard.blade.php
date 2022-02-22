@@ -2,7 +2,8 @@
 
 @section('content')
     @include('admin.alert')
-    Bonk!!! {{ $name }}
+    Bonk!!! {{ $name }} <br>
+    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
     <h3>Danh sách đơn hàng:</h3>
     @include('admin.alert')
     <table class="table">
