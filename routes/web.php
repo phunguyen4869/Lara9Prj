@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\RegisterController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\Admin\Users\SocialAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,12 +47,21 @@ Route::prefix('admin')->group(function () {
     Route::get(
         'register',
         [RegisterController::class, 'index']
-    );
+    )->name('register');
 
     //post data to store function in RegisterController
     Route::post(
         'register/store',
         [RegisterController::class, 'store']
+    );
+
+    Route::get(
+        '/auth/{provider}',
+        [SocialAuthController::class, 'redirectToProvider']
+    );
+    Route::get(
+        '/auth/{provider}/callback',
+        [SocialAuthController::class, 'handleProviderCallback']
     );
 
     //route to verify email notice

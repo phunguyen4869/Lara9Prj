@@ -23,13 +23,27 @@ class RegisterController extends Controller
             'email' => 'required|email:filter|unique:users,email',
             'password' => 'required',
             're_password' => 'required|same:password',
+            'phone' => 'required|numeric',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+        if (!empty($request->github_id)) {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'payment_method' => 'cod',
+                'github_id' => $request->github_id,
+                'password' => bcrypt($request->password),
+            ]);
+        } else {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'payment_method' => 'cod',
+                'password' => bcrypt($request->password),
+            ]);
+        }
 
         $user->assignRole('member');
 

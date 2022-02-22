@@ -27,3 +27,9 @@
         {{ Session::get('status') }}
     </div>
 @endif
+
+@if (!empty($social_login))
+    <div class="alert alert-success">
+        {{ $social_login }}
+    </div>
+@endif
