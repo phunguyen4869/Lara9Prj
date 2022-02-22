@@ -29,7 +29,7 @@
                             {{ $quantity }}<br>
                         @endforeach
                     </td>
-                    <td>{{ $order['total'] }}</td>
+                    <td>{{ number_format($order['total']) }}</td>
                     <td>{{ $order['customer_id'] }}</td>
                     <td>{{ $order['payment_method'] }}</td>
                     {{-- <td>{!! App\Helpers\Helper::active($order['status'], 'order', $order['id']) !!}</td> --}}

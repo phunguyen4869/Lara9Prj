@@ -27,7 +27,7 @@ class SocialAuthController extends Controller
         }
 
         if ($provider == 'github') {
-            // Kiểm tra xem người dùng đăng nhập bằng github đã tồn tại chưa
+            // Kiểm tra xem người dùng đăng nhập bằng github đã tồn tại
             $authUser = User::where('github_id', $socialUser->id)->first();
 
             if ($authUser) {
