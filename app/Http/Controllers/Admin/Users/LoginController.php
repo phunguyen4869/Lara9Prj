@@ -27,6 +27,8 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ], $request->remember)) {
+            $request->session()->regenerate();
+
             return redirect()->route('home');
         } else {
             return redirect()->back()->withInput()->withErrors([
