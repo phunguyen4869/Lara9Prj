@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\Users\UserController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\OrderAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +16,12 @@ use App\Http\Controllers\Admin\Users\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', [AuthController::class, 'login']);
+
+Route::post('register', [AuthController::class, 'register']);
+
+Route::middleware('auth:sanctum')->group( function () {
+    Route::get('about', [AuthController::class, 'about']);
+
+    Route::get('orders', [OrderAPIController::class, 'getOrder']);
 });
-
-Route::get('users', [UserController::class, 'userAPI']);
-
-Route::get('orders', [OrderController::class, 'orderAPI']);

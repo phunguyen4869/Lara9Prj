@@ -21,13 +21,6 @@ class UserController extends Controller
         $this->roles = $roles;
     }
 
-    public function userAPI()
-    {
-        $user = User::all();
-
-        return response()->json($user);
-    }
-
     public function index()
     {
         $users = $this->user->get();

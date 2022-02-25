@@ -16,13 +16,6 @@ class OrderController extends Controller
         $this->order = $order;
     }
 
-    public function orderAPI()
-    {
-        $order = Order::all();
-
-        return response()->json($order);
-    }
-
     public function index()
     {
         $orders = $this->order->get();
