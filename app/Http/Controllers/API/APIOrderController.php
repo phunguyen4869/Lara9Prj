@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Order\OrderService;
 
-class OrderAPIController extends Controller
+class APIOrderController extends Controller
 {
     protected $orders;
 

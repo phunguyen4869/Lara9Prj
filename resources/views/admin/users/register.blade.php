@@ -18,7 +18,7 @@
                 <form action="{{url('admin/register/store')}}" method="post">
                     <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Name"
-                            value="{{ $name ?? ''}}">
+                            value="{{ $name ?? ''}}" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>

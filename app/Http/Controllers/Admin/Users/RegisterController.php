@@ -20,6 +20,7 @@ class RegisterController extends Controller
     {
         $this->validate($request, [
             //check email and password is valid
+            'name' => 'required',
             'email' => 'required|email:filter|unique:users,email',
             'password' => 'required',
             're_password' => 'required|same:password',
