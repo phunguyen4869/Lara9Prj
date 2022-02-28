@@ -141,14 +141,13 @@ Route::prefix('admin')->group(function () {
     //middleware group
     Route::middleware(['auth', 'verified'])->group(function () {
         route::controller(DashboardController::class)->group(function () {
-            //get route to dashboard page
             Route::get('dashboard', 'index')->name('dashboard');
             Route::get('setting', 'setting');
             Route::post('setting', 'settingStore');
         });
 
 
-        //route to user page
+        //route to manage user page
         Route::prefix('user')->group(function () {
             Route::controller(UserController::class)->group(function () {
                 Route::middleware('role:admin')->group(function () {
