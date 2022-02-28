@@ -139,7 +139,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all()->pluck('name');
-        
+
         return view('admin.users.edit', [
             'title' => 'Sửa user',
             'user' => $user,
@@ -208,7 +208,7 @@ class UserController extends Controller
             $this->validate($request, [
                 'credit_card_number' => 'required',
                 'expiration_date' => 'required',
-                'cvv_code' => 'required|integer',
+                'cvv_code' => 'required|numeric',
                 'credit_card_name' => 'required',
             ]);
         } elseif ($request->payment_method == 'atm_card') {

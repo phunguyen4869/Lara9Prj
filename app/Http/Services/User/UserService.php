@@ -3,6 +3,7 @@
 namespace App\Http\Services\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
@@ -63,7 +64,6 @@ class UserService
             $user->email = $request->email;
             $user->phone = $request->phone;
             $user->address = $request->address;
-            $user->payment_method = $request->payment_method;
             $user->password = bcrypt($request->password);
             $user->save();
 
@@ -71,6 +71,44 @@ class UserService
         } catch (\Exception $error) {
             Session::flash('error', 'Cập nhật User lỗi');
             Log::error($error->getMessage());
+            return  false;
+        }
+
+        return  true;
+    }
+
+    public function settingStore($request, $userID)
+    {
+        try {
+            DB::beginTransaction();
+
+            $user = User::find($userID);
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->address = $request->address;
+            $user->payment_method = $request->payment_method;
+            $user->credit_card_number = $request->credit_card_number;
+            $user->expiration_date = $request->expiration_date;
+            $user->cvv_code = $request->cvv_code;
+            $user->credit_card_name = $request->credit_card_name;
+            $user->atm_card_number = $request->atm_card_number;
+            $user->bank_name = $request->bank_name;
+            $user->atm_card_name = $request->atm_card_name;
+            $user->save();
+
+            DB::commit();
+
+            Session::flash('success', 'Cập nhật thông tin thành công');
+
+        } catch (\Exception $error) {
+            Session::flash('error', 'Cập nhật thông tin lỗi');
+
+            Log::error($error->getMessage());
+
+            DB::rollBack();
+
             return  false;
         }
 
@@ -99,11 +137,15 @@ class UserService
             $user->fill($request->input())->save();
 
             Session::flash('success', 'Sửa payment method thành công');
+
         } catch (\Exception $error) {
             Session::flash('error', 'Sửa payment method không thành công');
+
             Log::error($error->getMessage());
+
             return  false;
         }
+
         return true;
     }
 

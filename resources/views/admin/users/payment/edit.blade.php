@@ -27,7 +27,7 @@
             </div>
 
             <div class="input-group mb-3">
-                <input type="number" name="cvv_code" class="form-control" placeholder="CvV code"
+                <input type="number" name="cvv_code" class="form-control" placeholder="CVV code"
                     value="{{ $user->cvv_code }}">
                 <div class="input-group-append">
                     <div class="input-group-text">
@@ -94,6 +94,5 @@
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Sửa Payment Method</button>
         </div>
-        @csrf
     </form>
 @endsection

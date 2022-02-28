@@ -216,7 +216,7 @@
                                 </div>
 
                                 <div class="bor8 bg0 m-b-12" style="width: 30%;">
-                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="cvv_code"
+                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="number" name="cvv_code"
                                         value="{{ $user != null ? $user->cvv_code : '' }}" placeholder="CVV">
                                 </div>
 
