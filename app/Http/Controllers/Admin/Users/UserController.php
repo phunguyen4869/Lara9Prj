@@ -139,6 +139,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all()->pluck('name');
+        
         return view('admin.users.edit', [
             'title' => 'Sửa user',
             'user' => $user,
