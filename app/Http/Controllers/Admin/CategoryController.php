@@ -62,7 +62,6 @@ class CategoryController extends Controller
 
     public function edit(Category $category) //check category id is exist in database
     {
-
         return view('admin.category.edit', [
             'title' => 'Sửa danh mục ' . $category->name,
             'category' => $category,

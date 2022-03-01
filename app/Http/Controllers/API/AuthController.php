@@ -70,6 +70,11 @@ class AuthController extends Controller
 
     public function about(Request $request)
     {
-        return $request->user();
+        $user = $request->user();
+        $role = $user->getRoleNames();
+
+        $result = array_merge($user->toArray(), ['role' => $role]);
+
+        return response()->json($result);
     }
 }

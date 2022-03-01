@@ -22,9 +22,10 @@ class RegisterController extends Controller
             //check email and password is valid
             'name' => 'required',
             'email' => 'required|email:filter|unique:users,email',
+            'phone' => 'required|numeric',
+            'address' => 'required',
             'password' => 'required',
             're_password' => 'required|same:password',
-            'phone' => 'required|numeric',
         ]);
 
         if (!empty($request->github_id)) {
@@ -41,6 +42,7 @@ class RegisterController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
+                'address' => $request->address,
                 'payment_method' => 'cod',
                 'password' => bcrypt($request->password),
             ]);
