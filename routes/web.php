@@ -141,7 +141,7 @@ Route::prefix('admin')->group(function () {
     //middleware group
     Route::middleware(['auth', 'verified'])->group(function () {
         route::controller(DashboardController::class)->group(function () {
-            Route::get('dashboard', 'index')->name('dashboard');
+            Route::get('/', 'index')->name('dashboard');
             Route::get('setting', 'setting');
             Route::post('setting', 'settingStore');
         });
