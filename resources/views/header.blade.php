@@ -21,7 +21,7 @@
 						</a> --}}
 
                     @if (!empty(Auth::user()))
-                        <a href="/admin/dashboard" class="flex-c-m trans-04 p-lr-25">
+                        <a href="/admin" class="flex-c-m trans-04 p-lr-25">
                             My Account
                         </a>
 
