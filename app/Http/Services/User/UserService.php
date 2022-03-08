@@ -70,7 +70,9 @@ class UserService
             Session::flash('success', 'Cập nhật User thành công');
         } catch (\Exception $error) {
             Session::flash('error', 'Cập nhật User lỗi');
+
             Log::error($error->getMessage());
+            
             return  false;
         }
 
@@ -100,7 +102,7 @@ class UserService
 
             DB::commit();
 
-            Session::flash('success', 'Cập nhật thông tin thành công');
+            Session::flash('success', 'Cập nhật thông tin tài khoản thành công');
 
         } catch (\Exception $error) {
             Session::flash('error', 'Cập nhật thông tin lỗi');
@@ -125,6 +127,7 @@ class UserService
             }
         } catch (\Exception $error) {
             Log::error($error->getMessage());
+
             return  false;
         }
 
@@ -134,7 +137,11 @@ class UserService
     public function updatePaymentMethod($request, $user)
     {
         try {
+            DB::beginTransaction();
+
             $user->fill($request->input())->save();
+
+            DB::commit();
 
             Session::flash('success', 'Sửa payment method thành công');
 
@@ -142,6 +149,8 @@ class UserService
             Session::flash('error', 'Sửa payment method không thành công');
 
             Log::error($error->getMessage());
+
+            DB::rollBack();
 
             return  false;
         }
@@ -153,6 +162,8 @@ class UserService
     {
         $user = User::find($id);
         try {
+            DB::beginTransaction();
+
             $user->fill([
                 'payment_method' => 'cod',
                 'credit_card_number' => null,
@@ -163,8 +174,13 @@ class UserService
                 'bank_name' => null,
                 'atm_card_name' => null
             ])->save();
+
+            DB::commit();
         } catch (\Exception $error) {
             Log::error($error->getMessage());
+
+            DB::rollBack();
+
             return  false;
         }
         return true;

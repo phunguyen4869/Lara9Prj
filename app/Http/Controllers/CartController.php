@@ -127,7 +127,7 @@ class CartController extends Controller
             $user = null;
         }
 
-        $result = $this->cart->sendOrder($request, $user);  
+        $result = $this->cart->sendOrder($request, $user);
 
         if ($result) {
             return redirect()->back()->with('success', 'Đã đặt hàng thành công');
