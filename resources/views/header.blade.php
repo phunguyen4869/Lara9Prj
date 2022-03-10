@@ -5,7 +5,7 @@
         <!-- Topbar -->
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
-                @if (!empty(Auth::user()))
+                @if (Auth::check())
                     <div class="left-top-bar">
                         Chào mừng <span class="text-primary">{{ Auth::user()->name }}</span> đến với Lara Shop
                     </div>
