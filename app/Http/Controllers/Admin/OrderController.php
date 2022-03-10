@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Exports\OrdersExport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Services\Order\OrderService;
 
 class OrderController extends Controller
@@ -84,5 +86,10 @@ class OrderController extends Controller
                 'error' => true,
             ]);
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new OrdersExport, 'orders.xlsx');
     }
 }

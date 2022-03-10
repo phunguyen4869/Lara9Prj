@@ -75,7 +75,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
 
-        return redirect('/admin/dashboard')->with('status', 'Your e-mail is verified!');
+        return redirect('/admin')->with('status', 'Your e-mail is verified!');
     })->middleware(['auth', 'signed'])->name('verification.verify');
 
     //route to resend email verification
@@ -338,6 +338,10 @@ Route::prefix('admin')->group(function () {
             Route::middleware('role:admin|moderator')->group(function () {
                 //route to change order status
                 Route::get('send-mail', 'sendMail');
+            });
+
+            Route::middleware('permission:orders export')->group(function () {
+                Route::get('export', 'export');
             });
         });
     });
