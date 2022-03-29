@@ -17,7 +17,7 @@ class UploadController extends Controller
 
     public function store(Request $request)
     {
-        $url = $this->uploadService->store($request);
+        $url = $this->uploadService->storeImage($request);
 
         if ($url !== false) {
             return response()->json([
