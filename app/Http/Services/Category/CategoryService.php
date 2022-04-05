@@ -128,6 +128,6 @@ class CategoryService
         }
 
         return $query
-            ->paginate(4);
+            ->paginate(8);
     }
 }

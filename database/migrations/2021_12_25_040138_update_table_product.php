@@ -14,7 +14,7 @@ class UpdateTableProduct extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->longText('thumb');
+            $table->longText('thumb')->nullable();
         });
     }
 

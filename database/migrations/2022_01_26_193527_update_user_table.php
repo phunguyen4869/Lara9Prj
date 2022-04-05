@@ -14,7 +14,7 @@ class UpdateUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('phone');
+            $table->text('phone');
             $table->longText('address')->nullable();
             $table->text('payment_method');
             $table->text('credit_card_number')->nullable();
