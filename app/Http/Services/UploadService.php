@@ -14,13 +14,15 @@ class UploadService
                 //Tạo tên thư mục chứa file theo ngày
                 $path = 'uploads/' . date("Y/m/d");
 
-                //Lấy tên gốc của các file
+                //đếm số lượng file
                 $fileCount = count($request->file('files'));
                 for ($i = 0; $i < $fileCount; $i++) {
+                    //Lấy tên gốc của các file
                     $name[] = $request
                         ->file('files')[$i]
                         ->getClientOriginalName();
 
+                    //lấy extension gốc của các file
                     $extension = $request->file('files')[$i]->extension();
 
                     if ($extension == 'jpg' || $extension == 'png' || $extension == 'jpeg') {
@@ -31,6 +33,8 @@ class UploadService
                         );
                     } else {
                         return false;
+
+                        break;
                     }
 
                     $url[] = '/storage/' . $path . '/' . $name[$i];
