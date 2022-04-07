@@ -23,7 +23,7 @@ class ProductFactory extends Factory
             'category_id' => $this->faker->numberBetween(1, 5),
             'price' => $this->faker->numberBetween(100000, 100000000),
             'price_sale' => $this->faker->numberBetween(100000, 10000000),
-            'active' => $this->faker->boolean,
+            'active' => 1,
             'thumb' => $this->faker->imageUrl(400, 400),
         ];
     }

@@ -39,6 +39,16 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'edit user']);
         Permission::create(['name' => 'delete user']);
 
+        Permission::create(['name' => 'show order']);
+        Permission::create(['name' => 'create order']);
+        Permission::create(['name' => 'edit order']);
+        Permission::create(['name' => 'delete order']);
+        Permission::create(['name' => 'orders export']);
+
+        Permission::create(['name' => 'edit payment']);
+        Permission::create(['name' => 'delete payment']);
+
+
         // create roles and assign created permissions
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());

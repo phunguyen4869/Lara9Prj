@@ -24,6 +24,9 @@ class UserFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
             'payment_method' => 'credit_card',
+            'credit_card_number' => $this->faker->creditCardNumber(),
+            'expiration_date' => $this->faker->creditCardExpirationDate(),
+            'credit_card_name' => $this->faker->name(),
         ];
     }
 
