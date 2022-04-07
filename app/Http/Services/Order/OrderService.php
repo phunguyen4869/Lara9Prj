@@ -15,6 +15,10 @@ class OrderService
     {
         $orders = Order::all();
 
+        if (!($orders->first())) {
+            return $orders;
+        }
+
         foreach ($orders as $key => $value) {
             $products_id[$key] = $value->product_id;
             $quantity[$key] = $value->quantity;
