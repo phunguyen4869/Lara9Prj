@@ -69,5 +69,49 @@ class CategorySeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Apple',
+            'parent_id' => 1,
+            'description' => 'Apple',
+            'content' => 'Apple các loại',
+            'slug' => 'apple',
+            'active' => 1,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Samsung',
+            'parent_id' => 1,
+            'description' => 'Samsung',
+            'content' => 'Samsung các loại',
+            'slug' => 'samsung',
+            'active' => 1,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'iPhone',
+            'parent_id' => 6,
+            'description' => 'iPhone',
+            'content' => 'iPhone các loại',
+            'slug' => 'iphone',
+            'active' => 1,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Macbook',
+            'parent_id' => 6,
+            'description' => 'Macbook',
+            'content' => 'Macbook các loại',
+            'slug' => 'macbook',
+            'active' => 1,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }
