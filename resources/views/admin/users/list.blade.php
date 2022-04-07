@@ -41,8 +41,8 @@
         </tbody>
     </table>
 
-    {{-- Hiển thị phần phân trang
+    Hiển thị phần phân trang
     <div class="card-footer clearfix">
         {!! $users->links() !!}
-    </div> --}}
+    </div>
 @endsection

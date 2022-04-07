@@ -15,6 +15,7 @@ use App\Http\Controllers\MainCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\RegisterController;
@@ -345,7 +346,13 @@ Route::prefix('admin')->group(function () {
             });
         });
     });
+
+    Route::controller(SearchController::class)->group(function () {
+        Route::get('search', 'index')->name('search');
+    });
 });
+
+//Main page
 Route::controller(MainController::class)->group(function () {
     Route::get('/', 'index')->name('home');
 
