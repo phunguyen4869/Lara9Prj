@@ -107,7 +107,7 @@ class UserController extends Controller
         $roles = Role::all()->pluck('name');
 
         return view('admin.users.add', [
-            'title' => 'Thêm user mới',
+            'title' => 'Add new user',
             'roles' => $roles,
         ]);
     }
@@ -141,7 +141,7 @@ class UserController extends Controller
         $roles = Role::all()->pluck('name');
 
         return view('admin.users.edit', [
-            'title' => 'Sửa user',
+            'title' => 'Edit user',
             'user' => $user,
             'roles' => $roles,
         ]);
